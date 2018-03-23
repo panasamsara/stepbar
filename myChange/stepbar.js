@@ -87,7 +87,12 @@
 
       // Text and number
       layer2.font = fontSize + 'px Arial';
-      var iLabel = (i + 1) + '';
+      //当前步骤之前的，圆圈中显示对勾（√）
+      if(i < current-1){
+        var iLabel = ('\✔') + '';
+      }else{
+        iLabel = (i + 1) + '';
+      }
       var metrics = layer2.measureText(iLabel);
 
       layer2.fillText(iLabel, thisX - (metrics.width / 2), thisY + (fontSize / 2));
