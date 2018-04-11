@@ -58,7 +58,7 @@
       var selectedLineTop = lineTop + selectedLineDelta / 2;
   
       // Left
-      // if(i !== 0) {//左边无进度条
+      // if(i != 0) {//左边无进度条(除第一个外 左边都有线条)
         layer1.fillStyle = color;
         layer1.fillRect(lineLeft, lineTop, lineWidth, lineHeight);
 
@@ -69,13 +69,18 @@
       // }
 
       //Right 
-      // if(i < items.length - 1) {//右边无进度条
+      // if(i < items.length - 1) {//右边无进度条 
         layer1.fillStyle = color;
         layer1.fillRect(lineRight, lineTop, lineWidth, lineHeight);
 
-        if(i < current - 1) {
+        if(current == items.length){//进度完成时，右边线条全部都变色，否则当前进度的右侧线条不变色，当前进度左侧线条全变色
           layer2.fillStyle = selectedColor;
           layer2.fillRect(lineRight, selectedLineTop , lineWidth, lineHeight - selectedLineDelta);
+        }else{
+          if(i < current -1 ) {
+            layer2.fillStyle = selectedColor;
+            layer2.fillRect(lineRight, selectedLineTop , lineWidth, lineHeight - selectedLineDelta);
+          }
         }
       // }
 
